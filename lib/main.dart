@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'chat_detail_page.dart'; // import halaman detail chat
 
 void main() {
   runApp(const MiniWhatsapp());
@@ -64,126 +65,134 @@ class _WhatsappHomeState extends State<WhatsappHome> {
                   title: Text(chat["nama"] ?? ""),
                   subtitle: Text(chat["pesan"] ?? ""),
                   trailing: Text(chat["waktu"] ?? ""),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChatDetailPage(chat: chat),
+                      ),
+                    );
+                  },
                 );
               },
             ),
 
             // Tab STATUS
             ListView(
-                children: [
-                  ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: Colors.green,
-                      child: Icon(Icons.person, color: Colors.white),
-                    ),
-                    title: Text('Status Saya'),
-                    subtitle: Text('Ketuk untuk menambahkan status'),
+              children: [
+                ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.green,
+                    child: Icon(Icons.person, color: Colors.white),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    child: Text('Status terkini',
-                        style: TextStyle(fontWeight: FontWeight.bold)),
+                  title: Text('Status Saya'),
+                  subtitle: Text('Ketuk untuk menambahkan status'),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Text('Status terkini',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                    child: Icon(Icons.person),
                   ),
-                  ListTile(
-                    leading: CircleAvatar(
-                      child: Icon(Icons.person),
-                    ),
-                    title: Text('KM DEV'),
-                    subtitle: Text('30 menit yang lalu'),
+                  title: Text('KM DEV'),
+                  subtitle: Text('30 menit yang lalu'),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                    child: Icon(Icons.person),
                   ),
-                  ListTile(
-                    leading: CircleAvatar(
-                      child: Icon(Icons.person),
-                    ),
-                    title: Text('Sarah Johnson'),
-                    subtitle: Text('1 jam yang lalu'),
+                  title: Text('Sarah Johnson'),
+                  subtitle: Text('1 jam yang lalu'),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                    child: Icon(Icons.person),
                   ),
-                  ListTile(
-                    leading: CircleAvatar(
-                      child: Icon(Icons.person),
-                    ),
-                    title: Text('Budi Santoso'),
-                    subtitle: Text('2 jam yang lalu'),
+                  title: Text('Budi Santoso'),
+                  subtitle: Text('2 jam yang lalu'),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                    child: Icon(Icons.person),
                   ),
-                  ListTile(
-                    leading: CircleAvatar(
-                      child: Icon(Icons.person),
-                    ),
-                    title: Text('Lisa Wijaya'),
-                    subtitle: Text('5 jam yang lalu'),
-                  ),
-                ],
-              ),
+                  title: Text('Lisa Wijaya'),
+                  subtitle: Text('5 jam yang lalu'),
+                ),
+              ],
+            ),
 
             // Tab CALLS
-           ListView(
-                children: [
-                  ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: Colors.green,
-                      child: Icon(Icons.link, color: Colors.white),
-                    ),
-                    title: Text('Buat link panggilan'),
-                    subtitle: Text('Bagikan link untuk panggilan WhatsApp'),
+            ListView(
+              children: [
+                ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.green,
+                    child: Icon(Icons.link, color: Colors.white),
                   ),
-                  ListTile(
-                    leading: CircleAvatar(
-                      child: Icon(Icons.person),
-                    ),
-                    title: Text('KM DEV'),
-                    subtitle: Row(
-                      children: [
-                        Icon(Icons.call_made, color: Colors.green, size: 16),
-                        SizedBox(width: 4),
-                        Text('Hari ini 2:30 PM'),
-                      ],
-                    ),
-                    trailing: Icon(Icons.call, color: Colors.green),
+                  title: Text('Buat link panggilan'),
+                  subtitle: Text('Bagikan link untuk panggilan WhatsApp'),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                    child: Icon(Icons.person),
                   ),
-                  ListTile(
-                    leading: CircleAvatar(
-                      child: Icon(Icons.person),
-                    ),
-                    title: Text('Sarah Johnson'),
-                    subtitle: Row(
-                      children: [
-                        Icon(Icons.call_received, color: Colors.red, size: 16),
-                        SizedBox(width: 4),
-                        Text('Kemarin 1:45 PM'),
-                      ],
-                    ),
-                    trailing: Icon(Icons.videocam, color: Colors.green),
+                  title: Text('KM DEV'),
+                  subtitle: Row(
+                    children: [
+                      Icon(Icons.call_made, color: Colors.green, size: 16),
+                      SizedBox(width: 4),
+                      Text('Hari ini 2:30 PM'),
+                    ],
                   ),
-                  ListTile(
-                    leading: CircleAvatar(
-                      child: Icon(Icons.person),
-                    ),
-                    title: Text('Budi Santoso'),
-                    subtitle: Row(
-                      children: [
-                        Icon(Icons.call_made, color: Colors.green, size: 16),
-                        SizedBox(width: 4),
-                        Text('Kemarin 12:20 PM'),
-                      ],
-                    ),
-                    trailing: Icon(Icons.call, color: Colors.green),
+                  trailing: Icon(Icons.call, color: Colors.green),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                    child: Icon(Icons.person),
                   ),
-                  ListTile(
-                    leading: CircleAvatar(
-                      child: Icon(Icons.person),
-                    ),
-                    title: Text('Lisa Wijaya'),
-                    subtitle: Row(
-                      children: [
-                        Icon(Icons.call_received, color: Colors.red, size: 16),
-                        SizedBox(width: 4),
-                        Text('2 hari yang lalu'),
-                      ],
-                    ),
-                    trailing: Icon(Icons.videocam, color: Colors.green),
+                  title: Text('Sarah Johnson'),
+                  subtitle: Row(
+                    children: [
+                      Icon(Icons.call_received, color: Colors.red, size: 16),
+                      SizedBox(width: 4),
+                      Text('Kemarin 1:45 PM'),
+                    ],
                   ),
-                ],
-              ),
+                  trailing: Icon(Icons.videocam, color: Colors.green),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                    child: Icon(Icons.person),
+                  ),
+                  title: Text('Budi Santoso'),
+                  subtitle: Row(
+                    children: [
+                      Icon(Icons.call_made, color: Colors.green, size: 16),
+                      SizedBox(width: 4),
+                      Text('Kemarin 12:20 PM'),
+                    ],
+                  ),
+                  trailing: Icon(Icons.call, color: Colors.green),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                    child: Icon(Icons.person),
+                  ),
+                  title: Text('Lisa Wijaya'),
+                  subtitle: Row(
+                    children: [
+                      Icon(Icons.call_received, color: Colors.red, size: 16),
+                      SizedBox(width: 4),
+                      Text('2 hari yang lalu'),
+                    ],
+                  ),
+                  trailing: Icon(Icons.videocam, color: Colors.green),
+                ),
+              ],
+            ),
           ],
         ),
       ),
